@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import Button from './button';
 import Image from 'next/image';
 import { useRouter } from 'next/dist/client/router';
+import { toast } from 'sonner';
 
 const customStyles = {
     content: {
@@ -20,6 +21,10 @@ export default function ModalComp({ data }: { data: any }) {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
+        if (Object.keys(data).length < 7) {
+            toast.error('Please select all nominees');
+            return;
+        }
         setIsOpen(true);
     }
 
@@ -48,7 +53,7 @@ export default function ModalComp({ data }: { data: any }) {
                 overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-50"
             >
 
-                {Object.keys(data).length > 2 ? <div className='flex flex-col items-center'>
+                {Object.keys(data).length > 0 ? <div className='flex flex-col items-center'>
                     <Image src='/images/success.png' alt="logo" width={50} height={50} />
                     <h1 className="">Following nominees submited!!</h1>
                 </div> : ''}

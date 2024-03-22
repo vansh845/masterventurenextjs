@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import Button from './button';
 import Image from 'next/image';
 import { useRouter } from 'next/dist/client/router';
-import { toast } from 'sonner';
 
 const customStyles = {
     content: {
@@ -21,11 +20,11 @@ export default function ModalComp({ data }: { data: any }) {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
-        if (Object.keys(data).length < 7) {
-            toast.error('Please select all nominees');
+        if (Object.keys(data).length > 0) {
+            setIsOpen(true);
             return;
         }
-        setIsOpen(true);
+        alert('Please select atleast one nominee');
     }
 
     // function afterOpenModal() {

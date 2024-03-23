@@ -49,8 +49,8 @@ export default function Test() {
                                 <p className="text-center font-semibold my-2">{nominee.title}</p>
                                 <img src={nominee.photoUrL} alt={nominee.title} className="object-fill h-40 w-40 overflow-hidden rounded-full shadow-md shadow-gray-400 mb-2" />
                                 <button className="inline-flex items-center px-3 py-2 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600"
-                                    onClick={e => handleNomineeSelect(award.id, nominee.id)}>
-                                    {selectedNominees[award.id] == nominee.id ? 'Selected' : 'Select'}
+                                    onClick={e => handleNomineeSelect(award.title, nominee.title)}>
+                                    {selectedNominees[award.title] == nominee.title ? 'Selected' : 'Select'}
                                 </button>
                             </div>
                         ))}
